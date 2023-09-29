@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Summary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center py-3">
+                <img id="logo" src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" class="img-fluid mb-2">
+            </div>
+        </div>
+        <div class="row justify-content-center vh-100">
+            <div class="col-md-8 text-center">
+                <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                <div id="response" class="response-box"></div>
+                <a href="/" class="btn btn-secondary rounded-pill back-btn">Back</a>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            generateSummary("{{ filename }}", "{{ language }}");
+        });
+    </script>
+</body>
+</html>

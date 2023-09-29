@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI with ICP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .scroll-btn {
+            background-color: #007bff; /* Adjust the background-color as per your preference */
+            color: #fff; /* Adjust the text color as per your preference */
+            border: none;
+            padding: 10px 20px; /* Adjust the padding as per your preference */
+            cursor: pointer;
+            border-radius: 5px; /* Adjust the border-radius as per your preference */
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px; /* Adjust the margin as per your preference */
+        }
+        .scroll-btn:hover {
+            background-color: #0056b3; /* Adjust the hover background-color as per your preference */
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center py-5">
+            <img id="logo" src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" class="img-fluid mb-2">
+            <div class="below-logo-text">Simplifying tomorrow of internet with ICP.</div>
+            <button class="scroll-btn" onclick="scrollToOptions()">Scroll to Learn</button>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-center vh-100" id="options-section">
+        <div class="col-md-6 text-center">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <div class="label">I speak</div>
+                <select id="language" class="form-control" onchange="showButtons()">
+                    <option value="" disabled selected>Select a language</option>
+                    {% for lang_code, lang_name in languages.items() %}
+                    <option value="{{ lang_code }}">{{ lang_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <div class="label">I want to read</div>
+                <select id="filename" class="form-control" onchange="showButtons()">
+                    <option value="" disabled selected>Select a document</option>
+                    {% for doc in docs %}
+                    <option value="{{ doc }}">{{ doc }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+             <div class="d-flex align-items-center justify-content-center mb-3">
+                <div class="label">I want to build</div>
+                <select id="" class="form-control" onchange="showButtons()">
+                    <option value="" disabled selected>Select a project</option>
+
+                </select>
+            </div>
+            <div class="buttons-container">
+                <a href="#" id="generate-summary-link" class="btn btn-primary rounded-pill" style="display:none;">Generate
+                    Summary</a>
+                <a href="#" id="qa-link" class="btn btn-secondary rounded-pill" style="display:none;">Q&A</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+    function scrollToOptions() {
+        const optionsSection = document.getElementById('options-section');
+        window.scrollTo({
+            top: optionsSection.offsetTop - (window.innerHeight - optionsSection.offsetHeight) / 2,
+            behavior: 'smooth'
+        });
+    }
+
+
+</script>
+</body>
+</html>

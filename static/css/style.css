@@ -1,0 +1,245 @@
+@font-face {
+    font-family: 'CustomFontRegular';
+    src: url('AiwithICP Inter-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CustomFontBold';
+    src: url('AiwithICP Inter-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background-color: #f4f4f4;
+    font-family: 'CustomFontRegular', 'Times New Roman', serif;
+}
+
+.below-logo-text, .btn, .label {
+    font-family: 'CustomFontBold', 'Times New Roman', serif;
+}
+
+#scroll-button {
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#clear-btn {
+    background: #dc3545;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #dc3545;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#container {
+    background: #ffffff;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 2px #ccc;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+.user-input {
+    width: 80%;
+    padding: 5px;
+}
+
+.send-btn, .clear-btn, .back-btn {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+.chat-box p {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.chat-box p.user {
+    background-color: #e6e6e6;
+    align-self: flex-end;
+}
+
+.chat-box p.bot {
+    background-color: #d1e7dd;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.message.user {
+    background-color: #e6e6e6;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.message.bot {
+    background-color: #d1e7dd;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+#chat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#logo {
+    max-width: 30%;
+    margin-bottom: 20px;
+}
+
+.container-fluid {
+    padding-top: 5vh;
+}
+
+.label {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    max-width: 300px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 15px;
+    height: 60px;
+}
+
+.below-logo-text {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: black;
+    letter-spacing: 1px;
+}
+
+.btn {
+    flex: 1;
+    max-width: 200px;
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.rounded-pill {
+    border-radius: 50px !important;
+}
+
+.d-flex {
+    align-items: center;
+}
+
+#container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+
+.user-input {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.send-btn, .clear-btn, .back-btn {
+    flex: 1;
+    max-width: 200px;
+    display: block;
+    margin: auto;
+}
+
+.loading-spinner {
+    margin-top: 20px;
+    color: #007bff;
+    font-size: 2rem;
+}
+
+#chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: calc(100vh - 200px);
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+    width: 100%;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.user-input, .buttons-container .btn {
+    width: 100%;
+}
+
+.form-control_input {
+    max-width: 3000px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 15px;
+    height: 60px;
+}
+
+.buttons-container {
+    margin-top: 10px;
+}
+
+.response-box {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+    padding: 30px;
+    margin-bottom: 20px;
+    background: #ffffff;
+    overflow-y: auto;
+    height: 50vh;
+    text-align: left;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.row.justify-content-center.vh-100 {
+    min-height: auto;
+}

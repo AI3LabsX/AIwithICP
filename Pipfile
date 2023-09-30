@@ -12,6 +12,7 @@ pymupdf = "*"
 faiss-cpu = "*"
 pypdf2 = "*"
 flask = "*"
+gunicorn = "*"
 
 [dev-packages]
 

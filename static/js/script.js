@@ -110,3 +110,42 @@ function clearChat() {
         chatBox.innerHTML = '';
     }
 }
+
+function showBuildButton() {
+    const project = document.getElementById('project').value;
+    const language = document.getElementById('language').value;
+    if(project && language) {
+        document.getElementById('build-link').style.display = 'block';
+    } else {
+        document.getElementById('build-link').style.display = 'none';
+    }
+}
+
+document.getElementById('build-link').addEventListener('click', function(e) {
+    const project = document.getElementById('project').value;
+    const language = document.getElementById('language').value;
+    if(!project || !language) return alert('Please select a project and a language.');
+    e.preventDefault(); // Prevent the default action of the anchor tag
+    window.location.href = `/build_page?project=${project}&language=${language}`;
+});
+
+function icpBuild(project, language) {
+    document.querySelector('.loading-spinner').style.display = 'block';
+    fetch('/icp_build', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ project: project, language: language }),
+        cache: 'no-cache'
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('response').innerText = data.response;
+        document.querySelector('.loading-spinner').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error during fetch operation: ', error);
+        document.querySelector('.loading-spinner').style.display = 'none';
+    });
+}

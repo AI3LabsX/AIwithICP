@@ -1,0 +1,20 @@
+[
+    {"category": "Dapps", "projects": ["Social Media", "Content Sharing", "Collaboration Platform", "Messaging App"]},
+    {"category": "NFT", "projects": ["Art Platform", "Music Platform", "Gaming Platform", "Marketplace"]},
+    {"category": "Marketplace", "projects": ["E-commerce", "Service Marketplace", "Data Marketplace", "NFT Marketplace"]},
+    {"category": "Stablecoins", "projects": ["Currency Pegged Stablecoins", "Algorithmic Stablecoins", "Collateralized Stablecoins"]},
+    {"category": "DeFi", "projects": ["Lending Platform", "Yield Farming", "Decentralized Exchange", "Insurance"]},
+    {"category": "Tokenization", "projects": ["Real Estate Tokenization", "Asset Tokenization", "Equity Tokenization"]},
+    {"category": "Identity and Security", "projects": ["Identity Management", "Security Auditing", "Fraud Detection"]},
+    {"category": "Governance", "projects": ["DAOs", "Voting Systems", "Dispute Resolution"]},
+    {"category": "Infrastructure", "projects": ["Decentralized Cloud", "Decentralized Storage", "Oracle Services"]},
+    {"category": "Enterprise Solutions", "projects": ["Supply Chain Management", "Data Verification", "Compliance Platform"]},
+    {"category": "Healthcare", "projects": ["Health Data Management", "Telemedicine"]},
+    {"category": "Education", "projects": ["Learning Management System", "Certification Platform"]},
+    {"category": "Research and Development", "projects": ["Scientific Research", "Development Tooling"]},
+    {"category": "Legal and Compliance", "projects": ["Smart Legal Contract", "Regulatory Compliance"]},
+    {"category": "Environment", "projects": ["Sustainability Platform", "Carbon Credit Trading"]},
+    {"category": "Human Resources", "projects": ["Recruitment Platform", "Employee Management"]},
+    {"category": "Agriculture", "projects": ["Agriculture Management", "Food Traceability"]},
+    {"category": "Travel and Tourism", "projects": ["Travel Booking", "Tourism Management"]}
+]

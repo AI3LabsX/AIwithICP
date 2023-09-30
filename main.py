@@ -153,6 +153,54 @@ def read_generate(filename, json_context, language):
     else:
         return intermediate_summaries[0]  # Return the summary directly if there is only one chunk
 
+
+def generate_build(project, vectorStore, language):
+    knowledge = []
+    query = f"I want to build {project} on ICP blockchain can generate me main step to do that!"
+    docs = vectorStore.max_marginal_relevance_search(query, k=10)
+    for doc in docs:
+        knowledge.append(doc)
+    print(docs)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo-16k",
+        messages=[
+            {
+                "role": "system",
+                "content": ""
+
+            },
+            {
+                "role": "system",
+                "content": f"Content from Vector Store based on relevance of query: {knowledge}"
+            },
+
+            {
+                "role": "user",
+                "content": f"User Question: {query}. "
+            },
+            {
+                "role": "system",
+                "content": f"Generate Answer in Language: {language}"
+            },
+            {
+                "role": "system",
+                "content": "When possible use link to refer user to go deeper, if links are presented in docs"
+            }
+            # {
+            #     "role": "user",
+            #     "content": f"Documents Source {[doc.metadata['source'] for doc in docs]}"
+            # }
+        ],
+
+        temperature=0,
+        max_tokens=2000,
+        top_p=0.4,
+        frequency_penalty=1.5,
+        presence_penalty=1
+    )
+    bot_response = response['choices'][0]['message']['content']
+    return bot_response
+
 # if __name__ == '__main__':
 #     # embeddings = OpenAIEmbeddings()
 #     # faiss = Path(PROJECT_ROOT).joinpath("Data", "faiss_index_ICP_READ")

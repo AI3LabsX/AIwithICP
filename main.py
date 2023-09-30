@@ -156,7 +156,7 @@ def read_generate(filename, json_context, language):
 
 def generate_build(project, vectorStore, language):
     knowledge = []
-    query = f"I want to build {project} on ICP blockchain can generate me main step to do that!"
+    query = f"I want to build {project} project on ICP blockchain can generate me main step to do that!"
     docs = vectorStore.max_marginal_relevance_search(query, k=10)
     for doc in docs:
         knowledge.append(doc)

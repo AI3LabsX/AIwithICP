@@ -38,6 +38,23 @@ body {
     border: 1px solid #dc3545;
 }
 
+#build-link {
+    background-color: #007bff; /* Adjust with the color of ICP blockchain */
+}
+
+#generate-summary-link {
+    background-color: #28a745; /* Adjust with the color of ICP blockchain */
+}
+
+#qa-link {
+    background-color: #FFA500; /* Adjust with the color of ICP blockchain */
+}
+
+.buttons-container .btn {
+    width: 100%; /* Make buttons the same size */
+    margin-bottom: 10px; /* Add space between buttons */
+}
+
 .buttons-container {
     display: flex;
     gap: 10px;

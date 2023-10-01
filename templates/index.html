@@ -24,6 +24,8 @@
 
 
 
+
+
     </style>
 </head>
 <body>
@@ -64,13 +66,14 @@
                     {% endfor %}
                 </select>
             </div>
+            <div class="buttons-container">
+                <a href="#" id="build-link" class="btn btn-primary rounded-pill" style="display:none;">Build</a>
+                <a href="#" id="generate-summary-link" class="btn btn-primary rounded-pill" style="display:none;">Generate
+                    Summary</a>
+                <a href="#" id="qa-link" class="btn btn-secondary rounded-pill" style="display:none;">Q&A</a>
+            </div>
         </div>
-        <div class="buttons-container">
-            <a href="#" id="build-link" class="btn btn-primary rounded-pill" style="display:none;">Build</a>
-            <a href="#" id="generate-summary-link" class="btn btn-primary rounded-pill" style="display:none;">Generate
-                Summary</a>
-            <a href="#" id="qa-link" class="btn btn-secondary rounded-pill" style="display:none;">Q&A</a>
-        </div>
+
 
     </div>
 </div>
@@ -84,6 +87,8 @@
             behavior: 'smooth'
         });
     }
+
+
 
 
 

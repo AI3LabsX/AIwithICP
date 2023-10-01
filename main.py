@@ -1,18 +1,16 @@
 import json
 import os
-import sys
-from collections import deque
+import typing as t
 from pathlib import Path
 
+import PyPDF2
 import openai
 from langchain import FAISS
 from langchain.embeddings import OpenAIEmbeddings
-import typing as t
 
 from utils import PROJECT_ROOT
 from utils.env import env
 from utils.logger import logger
-import PyPDF2
 
 openai.api_key = env.get_openai_api()
 
@@ -35,7 +33,6 @@ def create_json_context(data_path: Path | str):
                 # creating a pdf reader object
                 doc = PyPDF2.PdfReader(f)
                 page_content = doc.pages
-                print(page_content[1].extract_text())
                 pages_c = []
                 for i in page_content:
                     pages_c.append(i.extract_text())
@@ -50,7 +47,7 @@ def generate_qa(query: str, vectorstore, language) -> str:
     docs = vectorstore.max_marginal_relevance_search(query, k=10)
     for doc in docs:
         knowledge.append(doc)
-    print(docs)
+    logger.info(docs)
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo-16k",
         messages=[
@@ -101,8 +98,8 @@ def load_json_data(json_path: str | Path) -> t.Dict[str, t.Any] | t.List[str]:
 def read_generate(filename, json_context, language):
     data = load_json_data(PROJECT_ROOT.joinpath(json_context))
     content = data.get(filename)
-    print(filename)
-    print(content)
+    logger.info(filename)
+
     MAX_TOKENS = 12000  # Adjust as needed
 
     content_chunks = [content[i:i + MAX_TOKENS] for i in range(0, len(content), MAX_TOKENS)]
@@ -151,7 +148,7 @@ def read_generate(filename, json_context, language):
 
         return final_response['choices'][0]['message']['content']
     else:
-        return intermediate_summaries[0]  # Return the summary directly if there is only one chunk
+        return intermediate_summaries[0]
 
 
 def generate_build(project, vectorStore, language):
@@ -161,7 +158,7 @@ def generate_build(project, vectorStore, language):
     docs = vectorStore.max_marginal_relevance_search(query, k=10)
     for doc in docs:
         knowledge.append(doc)
-    print(docs)
+    logger.info(docs)
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo-16k",
         messages=[
@@ -187,10 +184,6 @@ def generate_build(project, vectorStore, language):
                 "role": "system",
                 "content": "When possible use link to refer user to go deeper, if links are presented in docs"
             }
-            # {
-            #     "role": "user",
-            #     "content": f"Documents Source {[doc.metadata['source'] for doc in docs]}"
-            # }
         ],
 
         temperature=0,
@@ -201,20 +194,3 @@ def generate_build(project, vectorStore, language):
     )
     bot_response = response['choices'][0]['message']['content']
     return bot_response
-
-# if __name__ == '__main__':
-#     # embeddings = OpenAIEmbeddings()
-#     # faiss = Path(PROJECT_ROOT).joinpath("Data", "faiss_index_ICP_READ")
-#     # vectorstore = get_vectorstore(str(faiss), embeddings)
-#     # while True:
-#     #     query = input(f"Prompt: ")
-#     #     if query == "exit" or query == "quit" or query == "q" or query == "f":
-#     #         print('Exiting')
-#     #         sys.exit()
-#     #     if query == '':
-#     #         continue
-#     #     logger.info(f"User Question: {query}")
-#     #     results = generate_response(query)
-#     #     logger.info(f"Bot answer: {results}")
-#     # print(get_all_docs(PROJECT_ROOT.joinpath("READ")))
-#     create_json_context(PROJECT_ROOT.joinpath("READ"))

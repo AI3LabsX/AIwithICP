@@ -111,14 +111,28 @@ function clearChat() {
     }
 }
 
-function showBuildButton() {
-    const project = document.getElementById('project').value;
+function showButtons() {
+    const filename = document.getElementById('filename').value;
     const language = document.getElementById('language').value;
+    const project = document.getElementById('project').value;
+
+    if(filename && language) {
+        document.getElementById('generate-summary-link').style.display = 'block';
+        document.getElementById('qa-link').style.display = 'block';
+    } else {
+        document.getElementById('generate-summary-link').style.display = 'none';
+        document.getElementById('qa-link').style.display = 'none';
+    }
+
     if(project && language) {
         document.getElementById('build-link').style.display = 'block';
     } else {
         document.getElementById('build-link').style.display = 'none';
     }
+}
+
+function showBuildButton() {
+    showButtons(); // Call showButtons function to handle the display of build button
 }
 
 document.getElementById('build-link').addEventListener('click', function(e) {

@@ -17,7 +17,7 @@ from utils import PROJECT_ROOT
 from utils.env import env
 
 logger = logging.getLogger(__name__)
-openai.api_key = env.get_openai_api()
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def tiktoken_len(text: str) -> int:

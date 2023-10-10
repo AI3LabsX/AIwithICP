@@ -12,7 +12,7 @@ from utils import PROJECT_ROOT
 from utils.env import env
 from utils.logger import logger
 
-openai.api_key = env.get_openai_api()
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 
 def get_all_docs(path: str | Path):
